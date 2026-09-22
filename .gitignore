@@ -1,0 +1,24 @@
+# environments and secrets
+.venv/
+.env
+.streamlit/secrets.toml
+
+# python / jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.log
+
+# dataset and large intermediate files (see data/README.md)
+data/*.csv
+artifacts/
+
+# copyrighted reference PDFs: keep them local
+References/
+
+# the key of the blind rating sheet (scripts/14_human_rating.py make recreates it identically)
+outputs/human_rating/rating_key.csv
+
+# local only: personal notes, drafts, clean-up candidates
+_personal/
+_to_review/

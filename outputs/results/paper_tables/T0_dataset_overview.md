@@ -1,0 +1,14 @@
+Table T0. Dataset overview.
+
+| item | value |
+|---|---|
+| file | data/mixalldata_clean.csv |
+| sha256 | 884e4567c39c1ee2560e09c48b7c6319baffab5a8ba5ff6149b071f8bfad9f1d |
+| messages | 3,194,808 |
+| vehicles (senders) | 24,663 |
+| pseudonyms | 118,909 |
+| columns in the csv / used | 30 / 21 (type and 8 z-columns are constant, dropped) |
+| time span (s) | 240.6 to 86400.0 |
+| genuine messages | 1,900,539 (59.49 %) |
+| messages identical (8 kinematic values) to another message | 21.98 % |
+| attack/fault messages that are copies of a genuine message | 239,986 |

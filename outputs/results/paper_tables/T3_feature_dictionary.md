@@ -1,0 +1,45 @@
+Table T3. The 41 input features of the final detector.
+
+| feature | first_in_set | meaning |
+|---|---|---|
+| posx | F0 (per message) | transmitted X position (m) |
+| posy | F0 (per message) | transmitted Y position (m) |
+| posx_n | F0 (per message) | noise/uncertainty value reported with X position |
+| posy_n | F0 (per message) | noise/uncertainty value reported with Y position |
+| spdx | F0 (per message) | transmitted X speed (m/s) |
+| spdy | F0 (per message) | transmitted Y speed (m/s) |
+| spdx_n | F0 (per message) | noise/uncertainty value reported with X speed |
+| spdy_n | F0 (per message) | noise/uncertainty value reported with Y speed |
+| aclx | F0 (per message) | transmitted X acceleration (m/s^2) |
+| acly | F0 (per message) | transmitted Y acceleration (m/s^2) |
+| aclx_n | F0 (per message) | noise/uncertainty value reported with X acceleration |
+| acly_n | F0 (per message) | noise/uncertainty value reported with Y acceleration |
+| hedx | F0 (per message) | transmitted heading, X component |
+| hedy | F0 (per message) | transmitted heading, Y component |
+| hedx_n | F0 (per message) | noise/uncertainty value reported with heading X |
+| hedy_n | F0 (per message) | noise/uncertainty value reported with heading Y |
+| spd | F0 (per message) | transmitted speed magnitude (m/s) |
+| acl | F0 (per message) | transmitted acceleration magnitude (m/s^2) |
+| dt | F1 (history of the pseudonym) | time since the previous message of the same identity (s); genuine beacons arrive every 1 s |
+| dpos | F1 (history of the pseudonym) | distance between this and the previous transmitted position (m) |
+| v_implied | F1 (history of the pseudonym) | speed implied by the change in transmitted position, dpos/dt (m/s) |
+| spd_resid | F1 (history of the pseudonym) | transmitted speed minus position-implied speed (m/s); near 0 when position and speed agree |
+| vel_err_x | F1 (history of the pseudonym) | transmitted X speed minus position-implied X velocity (m/s) |
+| vel_err_y | F1 (history of the pseudonym) | transmitted Y speed minus position-implied Y velocity (m/s) |
+| acl_err_x | F1 (history of the pseudonym) | transmitted X acceleration minus speed-implied X acceleration (m/s^2) |
+| acl_err_y | F1 (history of the pseudonym) | transmitted Y acceleration minus speed-implied Y acceleration (m/s^2) |
+| hed_disp_cos | F1 (history of the pseudonym) | cosine between transmitted heading and direction of travel implied by positions (1 = aligned) |
+| dhed | F1 (history of the pseudonym) | change of heading since the previous message (0 = unchanged, 2 = reversed) |
+| same_as_prev | F1 (history of the pseudonym) | 1 if position, speed, acceleration and heading are all identical to the previous message |
+| msg_index | F1 (history of the pseudonym) | number of earlier messages seen from this identity (capped at 50) |
+| r_dt_mean | F1 (history of the pseudonym) | mean time between the last messages of this identity (s) |
+| r_dpos_mean | F1 (history of the pseudonym) | mean position jump over the last messages (m) |
+| r_spd_std | F1 (history of the pseudonym) | standard deviation of transmitted speed over the last messages (m/s) |
+| r_resid_absmean | F1 (history of the pseudonym) | mean absolute speed-vs-position disagreement over the last messages (m/s) |
+| r_resid_std | F1 (history of the pseudonym) | standard deviation of the speed-vs-position disagreement over the last messages (m/s) |
+| r_vel_err_x_mean | F1 (history of the pseudonym) | mean X velocity error over the last messages (m/s); a stable non-zero value indicates a constant bias |
+| r_vel_err_y_mean | F1 (history of the pseudonym) | mean Y velocity error over the last messages (m/s); a stable non-zero value indicates a constant bias |
+| r_vel_err_x_std | F1 (history of the pseudonym) | standard deviation of the X velocity error over the last messages (m/s) |
+| r_vel_err_y_std | F1 (history of the pseudonym) | standard deviation of the Y velocity error over the last messages (m/s) |
+| r_same_frac | F1 (history of the pseudonym) | fraction of the last messages that exactly repeated their predecessor |
+| road_dist | F2 (road map) | distance from the transmitted position to the nearest location ever occupied by genuine training traffic (m); genuine vehicles are almost always within a few metres |

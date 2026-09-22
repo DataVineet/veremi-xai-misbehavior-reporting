@@ -1,0 +1,31 @@
+model,metric,estimate,ci_low,ci_high
+final model,accuracy,0.9609,0.9576,0.9644
+final model,balanced_accuracy,0.9005,0.8942,0.9072
+final model,macro_f1,0.9202,0.9146,0.9258
+final model,mcc,0.9371,0.9318,0.9425
+final model,vehicle_macro_f1,0.9567,0.9464,0.9669
+F0 (per-message only),accuracy,0.7338,0.7245,0.743
+F0 (per-message only),balanced_accuracy,0.3519,0.34,0.3635
+F0 (per-message only),macro_f1,0.3691,0.3566,0.3802
+F0 (per-message only),mcc,0.5248,0.5088,0.5394
+F0 (per-message only),vehicle_macro_f1,0.4291,0.4107,0.4464
+F1 (+history),accuracy,0.9558,0.9522,0.9594
+F1 (+history),balanced_accuracy,0.8848,0.878,0.8919
+F1 (+history),macro_f1,0.9081,0.9018,0.9143
+F1 (+history),mcc,0.9287,0.923,0.9344
+F1 (+history),vehicle_macro_f1,0.9524,0.9411,0.9621
+F2 (+road map),accuracy,0.9604,0.957,0.9638
+F2 (+road map),balanced_accuracy,0.8997,0.8932,0.9064
+F2 (+road map),macro_f1,0.9188,0.9129,0.9245
+F2 (+road map),mcc,0.9362,0.9309,0.9416
+F2 (+road map),vehicle_macro_f1,0.9572,0.9475,0.967
+"F1, history by true sender",accuracy,0.9307,0.9243,0.9371
+"F1, history by true sender",balanced_accuracy,0.8328,0.822,0.843
+"F1, history by true sender",macro_f1,0.8463,0.8352,0.8563
+"F1, history by true sender",mcc,0.8886,0.8779,0.899
+"F1, history by true sender",vehicle_macro_f1,0.8615,0.845,0.8766
+"F2, history by true sender",accuracy,0.9357,0.9295,0.9418
+"F2, history by true sender",balanced_accuracy,0.8495,0.8392,0.8596
+"F2, history by true sender",macro_f1,0.8577,0.8468,0.8677
+"F2, history by true sender",mcc,0.8969,0.8864,0.9072
+"F2, history by true sender",vehicle_macro_f1,0.8711,0.8559,0.8861

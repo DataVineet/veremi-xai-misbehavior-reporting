@@ -1,0 +1,9 @@
+Table T7a. Final model (xgb_F2_pseudo_d6), test set, 95 % bootstrap intervals.
+
+| metric | estimate | ci_low | ci_high |
+|---|---|---|---|
+| accuracy | 0.9609 | 0.9576 | 0.9644 |
+| balanced accuracy | 0.9005 | 0.8942 | 0.9072 |
+| macro-F1 | 0.9202 | 0.9146 | 0.9258 |
+| MCC | 0.9371 | 0.9318 | 0.9425 |
+| vehicle-level macro-F1 (majority vote) | 0.9567 | 0.9464 | 0.9669 |

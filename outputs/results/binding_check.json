@@ -1,0 +1,14 @@
+{
+ "groq": {
+  "backend": "groq",
+  "llm_reports": 59,
+  "single_feature_lines_checked": 441,
+  "suspicious_lines": 0
+ },
+ "groq_small": {
+  "backend": "groq_small",
+  "llm_reports": 60,
+  "single_feature_lines_checked": 627,
+  "suspicious_lines": 0
+ }
+}

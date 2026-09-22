@@ -1,0 +1,4 @@
+features,split_by_vehicle (correct),random_row_split (leaky),inflation
+F0 per message,0.3691,0.6798,0.3107
+F1 + history,0.9081,0.9536,0.045499999999999985
+F2 + road map,0.9188,0.9544,0.035600000000000076

@@ -1,0 +1,21 @@
+experiment,model,features,history_keyed_on,split,class_weighted,val_macro_f1,test_macro_f1,test_balanced_accuracy,test_accuracy,test_mcc,train_seconds
+xgb_F2_pseudo_rowsplit,xgb,F2,pseudonym,random rows,False,0.9554,0.9544,0.9402,0.9767,0.9632,525.7
+xgb_F1_pseudo_rowsplit,xgb,F1,pseudonym,random rows,False,0.9544,0.9536,0.9385,0.9762,0.9624,671.0
+xgb_F2_pseudo_lr05,xgb,F2,pseudonym,by vehicle,False,0.9158,0.9212,0.9017,0.9613,0.9376,193.3
+xgb_F2_pseudo_d6,xgb,F2,pseudonym,by vehicle,False,0.9154,0.9202,0.9005,0.9609,0.9371,121.2
+xgb_F2_pseudo_d10,xgb,F2,pseudonym,by vehicle,False,0.9153,0.92,0.9013,0.9607,0.9366,95.6
+xgb_F2_pseudo,xgb,F2,pseudonym,by vehicle,False,0.9142,0.9188,0.8997,0.9604,0.9362,224.3
+rf_F2_pseudo,rf,F2,pseudonym,by vehicle,False,0.9068,0.9124,0.8919,0.9582,0.9325,300.8
+xgb_F1_pseudo,xgb,F1,pseudonym,by vehicle,False,0.9034,0.9081,0.8848,0.9558,0.9287,84.0
+xgb_F2_pseudo_weighted,xgb,F2,pseudonym,by vehicle,True,0.9065,0.9081,0.9037,0.9518,0.9227,404.3
+tree_F2_pseudo,tree,F2,pseudonym,by vehicle,False,0.9017,0.9065,0.8889,0.9549,0.9273,818.6
+xgb_F1_pseudo_weighted,xgb,F1,pseudonym,by vehicle,True,0.9012,0.9028,0.8986,0.9488,0.9179,383.4
+rf_F1_pseudo,rf,F1,pseudonym,by vehicle,False,0.8852,0.89,0.8646,0.9506,0.9202,176.6
+tree_F1_pseudo,tree,F1,pseudonym,by vehicle,False,0.8845,0.888,0.8644,0.9482,0.9162,277.0
+xgb_F2_sender,xgb,F2,true sender,by vehicle,False,0.8669,0.8577,0.8495,0.9357,0.8969,146.6
+xgb_F1_sender,xgb,F1,true sender,by vehicle,False,0.8559,0.8463,0.8328,0.9307,0.8886,96.5
+logreg_F2_pseudo,logreg,F2,pseudonym,by vehicle,False,0.7893,0.7997,0.7521,0.907,0.8474,116.1
+logreg_F1_pseudo,logreg,F1,pseudonym,by vehicle,False,0.7487,0.7587,0.7169,0.8979,0.8318,54.6
+xgb_F0_rowsplit,xgb,F0,pseudonym,random rows,False,0.6807,0.6798,0.6369,0.8411,0.7375,332.0
+xgb_F0,xgb,F0,pseudonym,by vehicle,False,0.353,0.3691,0.3519,0.7338,0.5248,46.6
+rf_F0,rf,F0,pseudonym,by vehicle,False,0.3479,0.3491,0.3338,0.7246,0.5049,127.3

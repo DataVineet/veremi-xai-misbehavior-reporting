@@ -1,0 +1,142 @@
+[
+ {
+  "label": "13 DoS: detected correctly (confidence 1.00)",
+  "outcome": "correct",
+  "messageID": 11852686,
+  "sender": 7755,
+  "senderPseudo": 1077552,
+  "true_class": 13,
+  "pred": 13,
+  "conf": 0.9991
+ },
+ {
+  "label": "5 Constant speed: detected correctly (confidence 1.00)",
+  "outcome": "correct",
+  "messageID": 367115495,
+  "sender": 116031,
+  "senderPseudo": 101160316,
+  "true_class": 5,
+  "pred": 5,
+  "conf": 0.9999
+ },
+ {
+  "label": "2 Constant position offset: detected correctly (confidence 1.00)",
+  "outcome": "correct",
+  "messageID": 327438538,
+  "sender": 105753,
+  "senderPseudo": 101057536,
+  "true_class": 2,
+  "pred": 2,
+  "conf": 0.9994
+ },
+ {
+  "label": "3 Random position: detected correctly (confidence 1.00)",
+  "outcome": "correct",
+  "messageID": 258705084,
+  "sender": 87453,
+  "senderPseudo": 10874535,
+  "true_class": 3,
+  "pred": 3,
+  "conf": 0.9993
+ },
+ {
+  "label": "11 Data replay: detected correctly (confidence 0.98)",
+  "outcome": "correct",
+  "messageID": 216871688,
+  "sender": 71373,
+  "senderPseudo": 10713734,
+  "true_class": 11,
+  "pred": 11,
+  "conf": 0.9827
+ },
+ {
+  "label": "16 Grid Sybil: detected correctly (confidence 1.00)",
+  "outcome": "correct",
+  "messageID": 380453759,
+  "sender": 118911,
+  "senderPseudo": 201189116,
+  "true_class": 16,
+  "pred": 16,
+  "conf": 0.9984
+ },
+ {
+  "label": "18 DoS random Sybil: detected correctly (confidence 0.98)",
+  "outcome": "correct",
+  "messageID": 4738974,
+  "sender": 3891,
+  "senderPseudo": 37038912,
+  "true_class": 18,
+  "pred": 18,
+  "conf": 0.9813
+ },
+ {
+  "label": "0 Genuine: detected correctly (confidence 0.98)",
+  "outcome": "correct",
+  "messageID": 306899764,
+  "sender": 100863,
+  "senderPseudo": 101008636,
+  "true_class": 0,
+  "pred": 0,
+  "conf": 0.9774
+ },
+ {
+  "label": "9 Eventual stop: missed, predicted Genuine (confidence 0.97)",
+  "outcome": "wrong",
+  "messageID": 211469061,
+  "sender": 70191,
+  "senderPseudo": 10701914,
+  "true_class": 9,
+  "pred": 0,
+  "conf": 0.9681
+ },
+ {
+  "label": "2 Constant position offset: missed, predicted Genuine (confidence 0.85)",
+  "outcome": "wrong",
+  "messageID": 81827081,
+  "sender": 28995,
+  "senderPseudo": 10289953,
+  "true_class": 2,
+  "pred": 0,
+  "conf": 0.8519
+ },
+ {
+  "label": "12 Delayed messages: missed, predicted Genuine (confidence 0.90)",
+  "outcome": "wrong",
+  "messageID": 135441490,
+  "sender": 43011,
+  "senderPseudo": 10430113,
+  "true_class": 12,
+  "pred": 0,
+  "conf": 0.9039
+ },
+ {
+  "label": "16 Grid Sybil: missed, predicted Genuine (confidence 0.82)",
+  "outcome": "wrong",
+  "messageID": 441957164,
+  "sender": 137535,
+  "senderPseudo": 101375357,
+  "true_class": 16,
+  "pred": 0,
+  "conf": 0.8223
+ },
+ {
+  "label": "17 Data replay Sybil: missed, predicted DoS disruptive Sybil (confidence 0.54)",
+  "outcome": "wrong",
+  "messageID": 220370699,
+  "sender": 72015,
+  "senderPseudo": 960720155,
+  "true_class": 17,
+  "pred": 19,
+  "conf": 0.535
+ },
+ {
+  "label": "10 Disruptive: missed, predicted Data replay (confidence 0.55)",
+  "outcome": "wrong",
+  "messageID": 435234388,
+  "sender": 134175,
+  "senderPseudo": 101341757,
+  "true_class": 10,
+  "pred": 11,
+  "conf": 0.5487
+ }
+]

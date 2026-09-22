@@ -1,0 +1,11 @@
+Table T11. Published numbers on the same data family, as reported by their authors. They are NOT directly comparable (different splits, features, class definitions); see docs/background.md section 6.
+
+| source | task | split | features | reported |
+|---|---|---|---|---|
+| This work | 20 classes, per message | by vehicle | per-message only (F0) | macro-F1 0.369 |
+| This work | 20 classes, per message | random rows | per-message only (F0) | macro-F1 0.680 |
+| This work | 20 classes, per message | by vehicle | F2: history + road map, no identifiers | macro-F1 0.920 |
+| Slama et al. 2022 (same CSV) | 20 classes, per message | not stated (70/30) | raw kinematics + noise, identifiers dropped | F1 0.696 (random forest) |
+| Youness et al. 2025 (VeMisNet) | 20 classes, sequences of 10 | random sequences 80/20 | 14 kinematic + communication features | accuracy 0.918, F1 0.909, balanced accuracy 0.739 |
+| Khan et al. 2025 | 20 classes, per message | random rows 49/30/21 | identifiers and noise fields among inputs | accuracy 96.15 % |
+| Kamel et al. 2020 (dataset paper) | binary, per message | not applicable (rule-based) | plausibility checks | F1 0.899 on MixAll |

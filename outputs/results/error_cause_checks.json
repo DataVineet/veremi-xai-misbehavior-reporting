@@ -1,0 +1,66 @@
+{
+ "eventual_stop": {
+  "claim": "errors are the messages sent BEFORE the vehicle stops",
+  "messages": 5995,
+  "errors": 1109,
+  "share_of_errors_predicted_genuine": 1.0,
+  "share_of_errors_with_speed_above_0.5": 0.9378,
+  "error_rate_when_vehicle_is_moving": 1.0,
+  "error_rate_when_vehicle_is_stopped": 0.0139
+ },
+ "grid_sybil": {
+  "claim": "one identity per attacker (its own, genuine-looking beacons) causes the errors",
+  "messages": 24390,
+  "errors": 4150,
+  "pseudonyms_per_vehicle_median": 3.0,
+  "share_of_errors_in_the_single_worst_pseudonym_of_each_vehicle": 0.9629,
+  "error_rate_inside_that_pseudonym": 0.6682,
+  "share_of_rows_with_placeholder_pseudonym_1": 0.2084,
+  "error_rate_placeholder_pseudonym_1": 0.0004,
+  "error_rate_other_pseudonyms": 0.2148,
+  "worst_pseudonym_median_distance_to_road_map_m": 1.9587,
+  "other_pseudonyms_median_distance_to_road_map_m": 1.9886,
+  "worst_pseudonym_share_of_rows_off_map(>5m)": 0.0,
+  "other_pseudonyms_share_of_rows_off_map(>5m)": 0.0,
+  "worst_pseudonym_median_speed_position_disagreement": 0.3709,
+  "other_pseudonyms_median_speed_position_disagreement": 12.4211
+ },
+ "delayed_messages": {
+  "claim": "the zero-filled warm-up is easy, the delayed genuine-looking messages are hard",
+  "messages": 6037,
+  "errors": 1883,
+  "share_of_rows_all_zero": 0.563,
+  "error_rate_zero_rows": 0.0,
+  "error_rate_other_rows": 0.7138,
+  "share_of_errors_predicted_genuine": 0.9989
+ },
+ "constant_position_offset": {
+  "claim": "errors are offsets that still land on a road",
+  "messages": 6566,
+  "errors": 852,
+  "share_of_rows_off_the_road_map": 0.8017,
+  "error_rate_off_map": 0.0019,
+  "error_rate_on_map": 0.6467
+ },
+ "first_message_of_an_identity": {
+  "claim": "a first message has no history, so it is harder",
+  "share_of_all_test_messages": 0.0373,
+  "error_rate_first_messages": 0.2675,
+  "error_rate_other_messages": 0.0302,
+  "share_of_all_errors_that_are_first_messages": 0.2555,
+  "share_of_messages_that_are_first_by_class": {
+   "Genuine": 0.009,
+   "Grid Sybil": 0.0091,
+   "Data replay Sybil": 0.5008,
+   "DoS random Sybil": 0.4051,
+   "DoS disruptive Sybil": 0.4258
+  }
+ },
+ "data_replay_sybil_vs_dos_disruptive_sybil": {
+  "claim": "the two classes are confused with each other",
+  "class17_predicted_as_19": 0.3464,
+  "class19_predicted_as_17": 0.0529,
+  "class17_recall": 0.5314,
+  "class19_recall": 0.8429
+ }
+}

@@ -1,0 +1,4 @@
+requested_backend,model,n_reports,written_by_llm,llm_passed_first_try,llm_passed_after_retry,llm_rejected_twice_fallback_to_template,validation_pass_rate,mean_words,median_analyse_s (features+model+SHAP),median_report_s,misclassified_in_sample,low_or_moderate_confidence_in_sample
+template,deterministic-template,200,0,0,0,0,1.0,328.0,0.107,0.006,96,79
+groq_small,openai/gpt-oss-20b,60,60,55,5,0,1.0,256.9,0.074,1.636,20,20
+groq,openai/gpt-oss-120b,60,59,55,4,1,1.0,304.2,0.224,4.315,20,20

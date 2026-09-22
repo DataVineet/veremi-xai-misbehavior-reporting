@@ -1,0 +1,69 @@
+# Single source of truth for paths, seed, class mapping, features and LLM settings.
+# All paths are relative to the project root.
+seed: 42
+
+paths:
+  raw_csv: data/mixalldata_clean.csv
+  parquet: artifacts/messages.parquet          # compact copy of the CSV (identifiers + 16 features + class)
+  features: artifacts/features.parquet         # engineered feature table
+  split: artifacts/sender_split.csv            # sender -> train/val/test (fixed, reused by every experiment)
+  models: artifacts/models                     # experiment models (large, git-ignored)
+  final: models                                # deployable artifacts used by the app (tracked): model, card, road map, demo data
+  figures: outputs/figures
+  results: outputs/results
+  reports: outputs/reports
+  report_cache: artifacts/report_cache
+
+split:
+  group_col: sender
+  fractions: {train: 0.70, val: 0.15, test: 0.15}
+
+# Context features are computed per *identity*. `senderPseudo` = what a receiver can observe;
+# `sender` = simulator ground truth (upper bound, not observable in deployment).
+features:
+  identity_col: senderPseudo
+  rolling_window: 10
+
+# Class mapping = F2MD simulator enum (verified against data + source, see docs/background.md §4).
+# group: genuine | fault (non-malicious malfunction) | attack  -- per VeReMi Extension paper (Kamel et al., ICC 2020).
+# definition: close paraphrase of the dataset paper's wording; the LLM may only use this text to describe a class.
+classes:
+  0:  {name: Genuine,                   group: genuine, definition: "Normal behaviour: the vehicle broadcasts its real position, speed, acceleration and heading."}
+  1:  {name: Constant position,         group: fault,   definition: "The transmitted position stays constant (frozen) while the vehicle keeps moving."}
+  2:  {name: Constant position offset,  group: fault,   definition: "The transmitted position is the real position plus a fixed offset."}
+  3:  {name: Random position,           group: fault,   definition: "The transmitted position is drawn uniformly at random from the simulation playground in every message."}
+  4:  {name: Random position offset,    group: fault,   definition: "The transmitted position is the real position plus a random offset that changes in every message."}
+  5:  {name: Constant speed,            group: fault,   definition: "The transmitted speed stays constant regardless of the vehicle's real motion."}
+  6:  {name: Constant speed offset,     group: fault,   definition: "The transmitted speed is the real speed plus a fixed offset."}
+  7:  {name: Random speed,              group: fault,   definition: "The transmitted speed is drawn uniformly at random in every message."}
+  8:  {name: Random speed offset,       group: fault,   definition: "The transmitted speed is the real speed plus a random offset that changes in every message."}
+  9:  {name: Eventual stop,             group: attack,  definition: "The vehicle simulates a sudden stop by freezing its transmitted position and setting its speed to zero."}
+  10: {name: Disruptive,                group: attack,  definition: "The vehicle re-broadcasts data previously received from random neighbouring vehicles as if it were its own."}
+  11: {name: Data replay,               group: attack,  definition: "The vehicle re-broadcasts data previously received from one specific target neighbour as if it were its own."}
+  12: {name: Delayed messages,          group: fault,   definition: "Messages contain correct data but are sent with a delay, so the reported state is stale."}
+  13: {name: DoS,                       group: attack,  definition: "Denial of service: the vehicle sends messages at a frequency higher than the limit set by the standard."}
+  14: {name: DoS random,                group: attack,  definition: "Denial of service in which all message fields are additionally set to random values."}
+  15: {name: DoS disruptive,            group: attack,  definition: "Denial of service in which the high-frequency messages replay data received from random neighbours."}
+  16: {name: Grid Sybil,                group: attack,  definition: "Traffic-congestion Sybil attack: the attacker creates a grid of ghost vehicles, each with its own pseudonym."}
+  17: {name: Data replay Sybil,         group: attack,  definition: "Data replay in which the attacker switches to a new pseudonym for every new target vehicle."}
+  18: {name: DoS random Sybil,          group: attack,  definition: "DoS random in which the attacker changes its pseudonym on every message."}
+  19: {name: DoS disruptive Sybil,      group: attack,  definition: "DoS disruptive in which the attacker changes its pseudonym on every message."}
+
+# LLM reporting layer. `backend: template` needs no network/key and is the automatic fallback.
+# Any OpenAI-compatible endpoint works by editing a profile (or adding one) -- no code change.
+llm:
+  backend: auto                # auto = first profile whose API key env var is set, else template
+  temperature: 0.0
+  max_tokens: 700
+  timeout_s: 60
+  prompt_version: v2
+  app_default: groq_small       # writer preselected in the app when its key is set (the small model passed 60/60 reports)
+  profiles:
+    # optional per-profile keys: max_tokens (override) and extra (merged into the request body, e.g. provider-specific options)
+    groq:       {base_url: "https://api.groq.com/openai/v1", model: "openai/gpt-oss-120b", api_key_env: GROQ_API_KEY,
+                 max_tokens: 1500, extra: {reasoning_effort: low}}     # reasoning model: hidden reasoning tokens count towards max_tokens
+    groq_small: {base_url: "https://api.groq.com/openai/v1", model: "openai/gpt-oss-20b",  api_key_env: GROQ_API_KEY,
+                 max_tokens: 1500, extra: {reasoning_effort: low}}     # smaller model, for the faithfulness-by-model comparison
+    gemini:     {base_url: "https://generativelanguage.googleapis.com/v1beta/openai", model: "gemini-2.5-flash-lite",   api_key_env: GEMINI_API_KEY}
+    openrouter: {base_url: "https://openrouter.ai/api/v1",                            model: "meta-llama/llama-3.3-70b-instruct:free", api_key_env: OPENROUTER_API_KEY}
+    ollama:     {base_url: "http://localhost:11434/v1",                               model: "qwen3:4b",                api_key_env: null}

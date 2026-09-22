@@ -1,0 +1,21 @@
+class_id,name,group,messages,share_of_messages_%,vehicles,median_seconds_between_messages,median_pseudonyms_per_vehicle,mean_speed_m_per_s,share_speed_zero_%,share_identical_to_another_message_%,share_copy_of_a_genuine_message_%,definition
+0,Genuine,genuine,1900539,59.49,17264,1.0,1.0,9.71,0.2,6.7,0.0,"Normal behaviour: the vehicle broadcasts its real position, speed, acceleration and heading."
+1,Constant position,fault,43653,1.37,390,1.0,1.0,9.73,0.1,9.3,0.0,The transmitted position stays constant (frozen) while the vehicle keeps moving.
+2,Constant position offset,fault,43567,1.36,390,1.0,1.0,9.82,0.1,3.7,0.0,The transmitted position is the real position plus a fixed offset.
+3,Random position,fault,43857,1.37,390,1.0,1.0,9.55,0.2,3.9,0.0,The transmitted position is drawn uniformly at random from the simulation playground in every message.
+4,Random position offset,fault,42575,1.33,389,1.0,1.0,9.65,0.1,6.9,0.0,The transmitted position is the real position plus a random offset that changes in every message.
+5,Constant speed,fault,41925,1.31,390,1.0,1.0,31.08,0.0,5.2,0.0,The transmitted speed stays constant regardless of the vehicle's real motion.
+6,Constant speed offset,fault,44359,1.39,389,1.0,1.0,13.63,0.0,6.8,0.0,The transmitted speed is the real speed plus a fixed offset.
+7,Random speed,fault,42258,1.32,389,1.0,1.0,30.62,0.0,5.9,0.0,The transmitted speed is drawn uniformly at random in every message.
+8,Random speed offset,fault,42583,1.33,389,1.0,1.0,13.72,0.0,6.9,0.0,The transmitted speed is the real speed plus a random offset that changes in every message.
+9,Eventual stop,attack,42790,1.34,389,1.0,1.0,1.84,80.9,82.4,0.0,The vehicle simulates a sudden stop by freezing its transmitted position and setting its speed to zero.
+10,Disruptive,attack,43264,1.35,390,1.0,1.0,13.07,2.0,99.1,63.1,The vehicle re-broadcasts data previously received from random neighbouring vehicles as if it were its own.
+11,Data replay,attack,44337,1.39,389,1.0,1.0,10.46,1.1,99.3,80.1,The vehicle re-broadcasts data previously received from one specific target neighbour as if it were its own.
+12,Delayed messages,fault,43118,1.35,390,1.0,1.0,4.8,51.3,53.3,0.0,"Messages contain correct data but are sent with a delay, so the reported state is stale."
+13,DoS,attack,131305,4.11,390,0.25,1.0,9.73,0.1,99.9,0.0,Denial of service: the vehicle sends messages at a frequency higher than the limit set by the standard.
+14,DoS random,attack,126724,3.97,389,0.25,1.0,30.64,0.0,1.7,0.0,Denial of service in which all message fields are additionally set to random values.
+15,DoS disruptive,attack,129270,4.05,389,0.25,1.0,12.54,1.6,99.9,66.7,Denial of service in which the high-frequency messages replay data received from random neighbours.
+16,Grid Sybil,attack,175391,5.49,389,0.167,6.0,2.99,0.9,4.6,0.0,"Traffic-congestion Sybil attack: the attacker creates a grid of ghost vehicles, each with its own pseudonym."
+17,Data replay Sybil,attack,44310,1.39,389,1.0,57.0,10.66,0.8,99.1,78.9,Data replay in which the attacker switches to a new pseudonym for every new target vehicle.
+18,DoS random Sybil,attack,86883,2.72,390,0.5,100.0,30.64,0.0,13.0,0.0,DoS random in which the attacker changes its pseudonym on every message.
+19,DoS disruptive Sybil,attack,82100,2.57,389,0.5,100.0,11.92,2.2,99.9,68.2,DoS disruptive in which the attacker changes its pseudonym on every message.

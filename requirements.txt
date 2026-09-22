@@ -1,0 +1,20 @@
+altair==6.3.0
+ipykernel==7.3.0
+joblib==1.5.3
+jupyter==1.1.1
+matplotlib==3.11.1
+nbconvert==7.17.1
+numpy==2.5.2
+pandas==3.0.5
+pyarrow==25.0.1
+PyYAML==6.0.3
+requests==2.34.2
+scikit-learn==1.9.0
+scipy==1.18.1
+seaborn==0.13.2
+shap==0.52.0
+streamlit==1.64.0
+xgboost==3.4.1
+openpyxl==3.1.5
+# optional, only for scripts/12_app_screenshots.py (also needs Microsoft Edge or Google Chrome)
+playwright==1.63.0

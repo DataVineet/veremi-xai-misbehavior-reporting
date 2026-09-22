@@ -1,0 +1,15 @@
+{
+ "n_explained": 3000,
+ "additivity_max_abs_error": 1.1682510375976562e-05,
+ "perturbation_all": {
+  "top3_shap": {
+   "mean_prob_drop": 0.7419970631599426,
+   "share_prediction_flipped": 0.7886666666666666
+  },
+  "random3": {
+   "mean_prob_drop": 0.08057922124862671,
+   "share_prediction_flipped": 0.09066666666666667
+  }
+ },
+ "note": "features replaced by values of a random genuine test message; probability of the originally predicted class"
+}

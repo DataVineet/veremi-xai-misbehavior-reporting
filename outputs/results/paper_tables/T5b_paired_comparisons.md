@@ -1,0 +1,8 @@
+Table T5b. Paired bootstrap differences of macro-F1 (same resampled vehicles for both models).
+
+| comparison | mean_macro_f1_difference | ci_low | ci_high | share_of_resamples_positive |
+|---|---|---|---|---|
+| F1 (+history)  minus  F0 (per-message only) | 0.5394 | 0.5275 | 0.5519 | 1.0000 |
+| F2 (+road map)  minus  F1 (+history) | 0.0107 | 0.0085 | 0.0131 | 1.0000 |
+| F2 (+road map)  minus  F2, history by true sender | 0.0613 | 0.0516 | 0.0712 | 1.0000 |
+| F1 (+history)  minus  F1, history by true sender | 0.0621 | 0.0528 | 0.0718 | 1.0000 |

@@ -1,0 +1,4 @@
+writer,model,reports,names_top_shap_feature_%,states_confidence_level_%,names_runner_up_when_not_high_%,reports_with_non_high_confidence,class_named_in_summary_%,mentions_simulated_data_%,mean_words
+groq,openai/gpt-oss-120b,59,100.0,100.0,94.7,19,100.0,100.0,304.0
+groq_small,openai/gpt-oss-20b,60,100.0,93.3,100.0,20,100.0,100.0,256.9
+template,deterministic-template,200,100.0,100.0,100.0,79,100.0,100.0,328.0

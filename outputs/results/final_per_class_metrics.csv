@@ -1,0 +1,21 @@
+class,name,precision,recall,f1,support
+0,Genuine,0.971,0.9998,0.9852,288005
+1,Constant position,0.9901,0.9942,0.9922,6246
+2,Constant position offset,0.9937,0.8702,0.9279,6566
+3,Random position,0.9893,0.9904,0.9899,5527
+4,Random position offset,0.9908,0.9951,0.9929,6924
+5,Constant speed,0.9946,0.9943,0.9944,6103
+6,Constant speed offset,0.9967,0.9991,0.9979,6924
+7,Random speed,0.9944,0.9947,0.9945,6752
+8,Random speed offset,0.9981,0.9964,0.9972,6887
+9,Eventual stop,0.9996,0.815,0.8979,5995
+10,Disruptive,0.8604,0.8076,0.8332,5526
+11,Data replay,0.8524,0.8381,0.8452,6098
+12,Delayed messages,0.9865,0.6881,0.8107,6037
+13,DoS,0.9722,0.9966,0.9843,18333
+14,DoS random,0.9061,0.9843,0.9436,19823
+15,DoS disruptive,0.9851,0.8707,0.9244,19351
+16,Grid Sybil,0.9923,0.8298,0.9038,24390
+17,Data replay Sybil,0.785,0.5314,0.6338,6547
+18,DoS random Sybil,0.9032,0.9719,0.9363,13144
+19,DoS disruptive Sybil,0.7964,0.8429,0.819,13008
