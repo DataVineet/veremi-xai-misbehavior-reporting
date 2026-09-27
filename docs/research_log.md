@@ -4,12 +4,12 @@ Dated, append-only log of what was measured or decided. Newest entry at the bott
 
 ---
 
-## 2026-08-30 → 2026-09-06 — Initial data analysis (author, `VeReMi_XAI_Framework.ipynb`)
+## Initial data analysis (author, `VeReMi_XAI_Framework.ipynb`)
 
 - Phases 1–3 (partial): row/class counts, missing values, exact-duplicate rows (none), sender→class consistency, pseudonym audit, global and within-sender timing, constant/unique columns, overall and class-wise feature statistics, noise magnitudes, class-wise boxplots.
 - Saved: 7 figures in `outputs/figures/`, 2 CSVs in `outputs/results/`.
 
-## 2026-09-20 — Dataset audit (`scripts/dataset_audit.py`, read-only, full dataset)
+## Dataset audit (`scripts/dataset_audit.py`, read-only, full dataset)
 
 **Re-verified (identical to notebook):** 3,194,808 rows × 30 cols; 20 classes 0–19 with the same counts; no NaN/inf; `messageID` unique; 24,663 senders, each with exactly one class; 118,909 pseudonyms; constant columns = `type` + all eight z-columns.
 
@@ -29,7 +29,7 @@ Dated, append-only log of what was measured or decided. Newest entry at the bott
 
 **Not done (by instruction):** no feature engineering, no model training, no SHAP, no LLM work.
 
-## 2026-09-20 — Reference reading (all 11 unique PDFs, full text)
+## Reference reading (all 11 unique PDFs, full text)
 
 - CSV provenance: Kaggle "veremi-extension-data-1-21-gb" (owner `ivarprudnikov`); sender counts 7,399 / 17,264 match VeReMi Extension Table I "MixAll 0024" exactly. Cleaning procedure undocumented.
 - The VeReMi Extension paper assigns **no numeric class IDs**. The working mapping is Khan et al. 2025 Table 2 (same row counts as our CSV). Kaggle notebooks use Alladi et al.'s 18-class table (wrong for 9–17 on this CSV). VeMisNet Table 3 and MistralBSM A-codes give the numbering that matches our measured signatures.
@@ -38,7 +38,7 @@ Dated, append-only log of what was measured or decided. Newest entry at the bott
 - No reference generates text reports from SHAP evidence; MistralBSM uses the LLM as classifier only.
 - Details and citations: `docs/background.md` §4.4 and §6.
 
-## 2026-09-20 — Class mapping verified and adopted (`scripts/class_mapping_verification.py`)
+## Class mapping verified and adopted (`scripts/class_mapping_verification.py`)
 
 - Decision rule: decisions must be data-based; the Khan et al. mapping had only been taken as an idea.
 - F2MD simulator source (`veins-f2md/.../mdEnumTypes/AttackTypes.h`) fetched: enum order = mapping F exactly (0 Genuine … 19 DoSDisruptiveSybil; `StaleMessages` = Delayed messages).
@@ -46,14 +46,14 @@ Dated, append-only log of what was measured or decided. Newest entry at the bott
 - New positive tests: class 2 kinematically genuine but 86 % off-road (const. position offset); class 6 velocity error mean ≈ 7 / sd 0.73 (constant bias) vs class 8 mean ≈ 0 / sd 7.4 (random); class 11 & 17 replay one target at a time (source switch ≈ 43 %) vs classes 10, 15, 19 random neighbours (≈ 89–90 %); class 17 changes pseudonym on 99.2 % of target changes.
 - **Mapping F adopted** (docs/background.md §4). Khan et al. Table 2 documented as inconsistent with the dataset.
 
-## 2026-09-20 — LLM provider reconnaissance (no implementation)
+## LLM provider reconnaissance (no implementation)
 
 - Constraints: no API key yet; API-based LLM preferred (limited local GPU); integration must stay modular/switchable incl. Ollama; decision not to be locked.
 - Hardware measured: i5-12500H, 15.7 GB RAM, RTX 3050 Laptop 4 GB VRAM; Ollama not installed.
 - Free-tier survey (secondary sources, mid-2026; official Groq/Gemini pages expose limits only in the account console): Groq and Google AI Studio are the practical no-card options; OpenRouter as aggregator; Cerebras free tier / GitHub Models reported withdrawn. Numbers are unverified until checked in our own console.
 - Design consequence: a single OpenAI-compatible backend + template backend + disk cache makes the provider a config line (docs/background.md §5.8.1).
 
-## 2026-09-20 — Implementation of Phases 4–8 
+## Implementation of Phases 4–8 
 
 All numbers: test split = 3,710 vehicles / 478,186 messages never seen in training (sender-disjoint 70/15/15, seed 42). Source: `outputs/results/experiments/*.json`.
 
@@ -70,7 +70,7 @@ All numbers: test split = 3,710 vehicles / 478,186 messages never seen in traini
 11. **SHAP vs. class definitions** (`outputs/figures/shap_per_class_heatmap.png`): the dominant feature of each class matches its definition — Constant speed → `r_spd_std`; Constant speed offset → `r_vel_err_x_mean` (stable bias); Constant position offset → `road_dist`; Random position / offset → `r_dpos_mean`; DoS → `r_same_frac`; Eventual stop → `acl`, `spd`; Delayed messages → `hedy_n` (the zero-filled warm-up rows); DoS/Sybil variants → `dt`, `r_dt_mean`; Data replay Sybil → `msg_index` (fresh pseudonyms). No identifier or absolute-time artefacts.
 12. **Notebook** `VeReMi_XAI_Framework.ipynb` repaired (portable root, `behavioral_features` defined, real gap check, single-pass constant-column scan, heading removed from the noise-to-signal ratio) and extended with a Phases 4–8 walk-through. Executed top-to-bottom: 34 code cells, 0 errors; regenerated `overall_feature_statistics.csv`, `class_wise_feature_means.csv` and the EDA figures are byte-identical to the originals (the originals were kept in a local backup that is not part of the repository).
 
-## 2026-09-20/21 — First real LLM evaluation (free Groq key added)
+## First real LLM evaluation (free Groq key added)
 
 Setup: Groq free tier, OpenAI-compatible endpoint, temperature 0, `reasoning_effort: low`. `llama-3.3-70b-versatile` no longer exists on Groq (HTTP 404 → clean template fallback, as designed); models available to the key were listed through `/models` and the profiles were set to `openai/gpt-oss-120b` (`groq`) and `openai/gpt-oss-20b` (`groq_small`). Measured free limits for gpt-oss-120b: 8,000 tokens/min, 200,000 tokens/day, 1,000 requests/day; one report ≈ 2.4–3 k tokens.
 
@@ -83,7 +83,7 @@ Setup: Groq free tier, OpenAI-compatible endpoint, temperature 0, `reasoning_eff
 4. **Binding check** (`scripts/06_binding_check.py`, offline): 749 report lines that name exactly one top feature (627 + 122) — **0** lines where another feature's value/SHAP appears without the feature's own.
 5. Spot reading: low-confidence cases are reported as such with their alternatives (e.g. "Constant position … confidence 0.3559 (low) … Random position offset 0.3387").
 
-## 2026-09-21 — Uncertainty, robustness, error causes (`scripts/07_uncertainty_and_errors.py`, `08_seed_robustness.py`; test split only)
+## Uncertainty, robustness, error causes (`scripts/07_uncertainty_and_errors.py`, `08_seed_robustness.py`; test split only)
 
 1. **Bootstrap CIs** (whole vehicles resampled within each class, because the messages of one vehicle are not independent): final model macro-F1 0.9202 [0.9146, 0.9258], accuracy 0.9609 [0.9576, 0.9644], balanced accuracy 0.9005 [0.8942, 0.9072], MCC 0.9371 [0.9318, 0.9425] (`test_metrics_ci.csv`). Weakest classes: Data replay Sybil F1 0.634 [0.602, 0.662], Delayed messages 0.811 [0.769, 0.855], DoS disruptive Sybil 0.819 [0.788, 0.846], Disruptive 0.833 [0.788, 0.874] (`final_per_class_metrics_ci.csv`).
 2. **Paired bootstrap of macro-F1 differences** (`paired_comparisons.csv`; every difference positive in 100 % of resamples): history features F1 − F0 = +0.539 [0.528, 0.552]; road map F2 − F1 = +0.0107 [0.0085, 0.0131]; pseudonym-keyed history − true-sender-keyed history = +0.061 (F2) and +0.062 (F1).
@@ -98,7 +98,7 @@ Setup: Groq free tier, OpenAI-compatible endpoint, temperature 0, `reasoning_eff
    - First message of a pseudonym: 3.7 % of test messages, error rate 0.268 vs 0.030 for later messages, 25.6 % of all errors; first messages make up 50 % / 41 % / 43 % of Data replay Sybil / DoS random Sybil / DoS disruptive Sybil (fresh pseudonyms) but only about 1 % of Genuine and Grid Sybil.
    - Data replay Sybil is predicted as DoS disruptive Sybil in 34.6 % of cases (recall 0.531); the reverse in 5.3 %.
 
-## 2026-09-21 — Tables, showcase, report completeness, app screenshots, diagram, rating sheet
+## Tables, showcase, report completeness, app screenshots, diagram, rating sheet
 
 - `scripts/09_paper_tables.py`: tables T0–T11 (+ T10b completeness, T10c binding check) as CSV and Markdown in `outputs/results/paper_tables/`; only the literature rows of T11 are typed (marked as reported by the authors). T10 was regenerated after the gpt-oss-120b run was completed.
 - **gpt-oss-120b evaluation finished** (same 60-message sample, prompt v2, validator v2): 59/60 written by the LLM and valid (55 first try, 4 after the corrective retry), 1 template fallback (the corrective retry still named the feature `spdy_n`, which is not in that message's evidence — the validator caught it). Mean 304 words, median 4.3 s per report (gpt-oss-20b: 257 words, 1.6 s). Binding check: 0 suspicious lines out of 441 (120b) and 627 (20b).
@@ -110,7 +110,7 @@ Setup: Groq free tier, OpenAI-compatible endpoint, temperature 0, `reasoning_eff
 - **Part 2 notebook executed** (`VeReMi_XAI_Part2.ipynb`): 33/33 code cells, 0 errors; the live-computed metrics of the final model agree with the model card; the Groq reports come from the cache (no API call).
 - **Repository prepared for publication:** documentation moved to `docs/` (English; `PROJECT_GUIDELINES.md` trimmed to `docs/background.md`, sections renumbered); `LICENSE` (MIT), `NOTICE.md` (the dataset is CC BY 4.0, checked against its Zenodo record) and `data/README.md` (source, size, SHA-256) added; the dataset-dependent tests now skip cleanly when `artifacts/` is missing (found by running the tests on a copy that contains only the files to be published); the old walk-through cells of the Part 1 notebook (Part 2 replaces them) and local absolute paths were removed; the dataset audit script was renamed `dataset_audit.py`.
 
-## 2026-09-21 — Two checks made while documenting the project
+## Two checks made while documenting the project
 
 - **Shared placeholder pseudonym.** `senderPseudo == 1` is a placeholder shared by many vehicles, all of class 16 (Grid Sybil). Because the history features are grouped by pseudonym, the history of these rows mixes several vehicles. Measured on the test set (saved predictions): 5,083 of 478,186 test rows (1.06 %, belonging to 58 of the 59 class-16 test vehicles) carry this pseudonym, and they are almost always classified correctly (recall 0.9996, versus 0.7852 for the other class-16 rows). Removing them from the test set lowers the overall macro-F1 from 0.9202 to 0.9188 and the class-16 F1 from 0.9038 to 0.8756. So the headline number hardly depends on this artefact (−0.0014), but part of the Grid Sybil score does; it is a limitation of the dataset (the placeholder occurs only in class 16) that a real receiver would not have. The models were not retrained without it.
 - **Column count.** The working table has 21 columns (4 identifiers, the label and 16 features): 30 columns minus `type` and the 8 z-columns. Table T0 and one notebook cell had said 22; corrected.
